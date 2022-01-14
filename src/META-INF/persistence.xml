@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="World-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.eltonb.datatier.jpa.world.entities.Countrylanguage</class>
+        <class>com.eltonb.datatier.jpa.world.entities.City</class>
+        <class>com.eltonb.datatier.jpa.world.entities.Country</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/world"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.password" value="eltonelt"/>
+            <property name="javax.persistence.schema-generation.database.action" value="create"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="BookPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.eltonb.datatier.jpa.textbook.ex01.model.Authors</class>
+        <class>com.eltonb.datatier.jpa.textbook.ex01.model.Titles</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/advjava19-books"/>
+            <property name="javax.persistence.jdbc.user" value="APP"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.password" value="app"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="AddressBookPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.eltonb.datatier.jpa.textbook.ex02.model.Addresses</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/advjava19-addressbook"/>
+            <property name="javax.persistence.jdbc.user" value="APP"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.password" value="app"/>
+        </properties>
+    </persistence-unit>
+
+    <persistence-unit name="uni-PU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>com.eltonb.datatier.jpa.uni.entities.Student</class>
+        <class>com.eltonb.datatier.jpa.uni.entities.Department</class>
+        <class>com.eltonb.datatier.jpa.uni.entities.Instructor</class>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/advjava19-uni"/>
+            <property name="javax.persistence.jdbc.user" value="APP"/>
+            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+            <property name="javax.persistence.jdbc.password" value="APP"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
