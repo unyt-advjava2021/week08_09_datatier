@@ -42,12 +42,6 @@
         <class>com.eltonb.datatier.jpa.uni.entities.Student</class>
         <class>com.eltonb.datatier.jpa.uni.entities.Department</class>
         <class>com.eltonb.datatier.jpa.uni.entities.Instructor</class>
-        <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/advjava19-uni"/>
-            <property name="javax.persistence.jdbc.user" value="APP"/>
-            <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
-            <property name="javax.persistence.jdbc.password" value="APP"/>
-        </properties>
     </persistence-unit>
 
 </persistence>

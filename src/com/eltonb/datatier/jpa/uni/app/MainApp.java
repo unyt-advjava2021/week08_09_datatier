@@ -6,12 +6,14 @@ import com.eltonb.datatier.jpa.uni.entities.Instructor;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.io.FileInputStream;
 import java.util.List;
+import java.util.Properties;
 
 public class MainApp {
 
-    private final EntityManagerFactory emf;
-    private final EntityManager em;
+    private EntityManagerFactory emf;
+    private EntityManager em;
 
     public static void main(String[] args) {
         MainApp app = new MainApp();
@@ -19,8 +21,14 @@ public class MainApp {
     }
 
     public MainApp() {
-        this.emf = Persistence.createEntityManagerFactory("uni-PU");
-        this.em = emf.createEntityManager();
+        try {
+            Properties properties = new Properties();
+            properties.load(new FileInputStream("resources/persistence.properties"));
+            this.emf = Persistence.createEntityManagerFactory("uni-PU", properties);
+            this.em = emf.createEntityManager();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void doRead() {
@@ -28,12 +36,21 @@ public class MainApp {
         Instructor csChair = csd.getChair();
         System.out.println(csd);
         System.out.println(csChair);
+
+
         System.out.println("----CS instructors------");
         csd.getInstructors().forEach(System.out::println);
         System.out.println("----CS students------");
         csd.getStudents().forEach(System.out::println);
-        List<Department> engDepartments = em.createNamedQuery("Department.findAll").getResultList();
+
+        List<Department> engDepartments =
+                em
+                        .createNamedQuery("Department.findByFacultyCode")
+                        .setParameter("facultyCode", "ENG")
+                        .getResultList();
         engDepartments.forEach(System.out::println);
+
+
     }
 
     private void doCreateInstructor() {
@@ -103,10 +120,10 @@ public class MainApp {
     }
 
     private void go() {
-        doDelete1();
+        //doDelete1();
         //doDeleteDepartment();
         //doCreateDepartment();
         //doCreateInstructor();
-        //doRead();
+        doRead();
     }
 }
